@@ -24,7 +24,9 @@ const updateCurrentDay = async (win: BrowserWindow, updateTimes: TimesType) => {
     };
     await new Promise((resolve) => {
       set(TIMES_FILE, timesFile, () => {
-        win.webContents.send(CHANNEL_TIMES, getAllTimes());
+        if (win !== null && !win.isDestroyed()) {
+          win.webContents.send(CHANNEL_TIMES, getAllTimes());
+        }
         resolve(true);
       });
     });
