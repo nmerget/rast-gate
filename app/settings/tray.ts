@@ -1,12 +1,11 @@
 import { app, nativeImage, Tray, Menu, BrowserWindow } from "electron";
-import { join } from "node:path";
+import { getIconPath } from "../utils";
 
 const createTray = (
   win: BrowserWindow | null,
   createWindow: () => BrowserWindow
 ) => {
-  const icon = join(process.env.PUBLIC, "favicon.ico"); // required.
-  const trayicon = nativeImage.createFromPath(icon);
+  const trayicon = nativeImage.createFromPath(getIconPath());
   const tray = new Tray(trayicon.resize({ width: 16 }));
 
   const showAppClick = () => {
