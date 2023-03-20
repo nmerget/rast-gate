@@ -16,7 +16,7 @@ type ObjectKeysType = {
 type TableRow = {
   key: string;
   label: string | any;
-  cellFn?: (param: any) => string | ReactElement;
+  cellFn?: (param?: any) => string | ReactElement;
 };
 const tableRows: TableRow[] = [
   { key: "id", label: "Tag" },
@@ -35,7 +35,7 @@ const tableRows: TableRow[] = [
     label: "Pausen",
     cellFn: (param: TimesType[]) => (
       <>
-        {param.map((pause) => (
+        {param && param.map((pause) => (
           <Fragment key={`${pause.start}`}>
             <small>
               {`${new Date(
