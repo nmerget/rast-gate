@@ -79,7 +79,7 @@ export const updateBreaks = async (
 
 export const getIconPath = () => {
   if (process.platform === "darwin") {
-    return join(process.env.PUBLIC, "icon.svg");
+    return join(process.env.PUBLIC, "iconTemplate.svg");
   } else {
     return join(process.env.PUBLIC, "favicon.ico");
   }
