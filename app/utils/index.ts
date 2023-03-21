@@ -2,6 +2,7 @@ import { getSync, set } from "electron-json-storage";
 import { BrowserWindow } from "electron";
 import type { TimesType } from "../shared/data/times";
 import { CHANNEL_TIMES } from "../shared/constants";
+import { join } from "node:path";
 
 const TIMES_FILE = "rast-gate-times";
 
@@ -76,4 +77,18 @@ export const updateBreaks = async (
   await updateCurrentDay(win, currentDayTimes);
 };
 
-export default { saveEndTime, saveStartTime, updateBreaks, getAllTimes };
+export const getIconPath = () => {
+  if (process.platform === "darwin") {
+    return join(process.env.PUBLIC, "icon.svg");
+  } else {
+    return join(process.env.PUBLIC, "favicon.ico");
+  }
+};
+
+export default {
+  saveEndTime,
+  saveStartTime,
+  updateBreaks,
+  getAllTimes,
+  getIconPath,
+};
